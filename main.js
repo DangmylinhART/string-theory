@@ -10,7 +10,7 @@ const indexedChars = function(str){
 }
 console.log(indexedChars('hello'))
 
-//////////************** */
+//////////************** *//////////////////////////////////////////////TEACHER FIX
 const exclaim = function(str){
 let result = '';
 for (let i = 0 ; i < str.length ; i++ ){
@@ -25,13 +25,15 @@ return result
 }
 console.log(exclaim('hello. you there?'))
 
-////////////////
+
+//////////////////////////////////////////////////////////////////////////////DONE
 const repeatIt = function (str, num){
   return str.repeat(num)
 } 
 console.log(repeatIt('ahehe',3))
 
-//////////******************** */
+
+//////////******************** *//////////////////////////////////////////////DONE
 const truncate = function(str){
   let result = '';
   for ( i = 0 ; i <= str.length ; i ++){
@@ -43,7 +45,43 @@ const truncate = function(str){
 }
 console.log(truncate("'Well, that's just, like, your opinion man."))
 
-//************************* */
+// ///teacher fixed ////////////////////////////////////////////////////TEACHER FIX
+const truncate2 = function(str){
+if ( typeof str !== "string"){
+  return ;
+}
+if ( str.length < 18){
+  return str;
+}
+let result = '';
+  for ( i = 0; i < 15; i++){
+  result = result + str[i]
+} return result + '...'
+}
+console.log(truncate2('this is a long long long '))
+
+
+
+// //************************* *//////////////////////////////////////////////TEACHER FIX
+const ciEmailify = function (str){
+let email = ''
+for ( i = 0 ; i < str.length ; i++ ){
+  if ( str[i] === ' '){
+    email = email + '.'
+  } else {
+    email = email + str[i].toLowerCase()
+  }
+
+  ////or
+  //email = email + (str[i] === ' ' ? '.' : str[i].toLowerCase())
+} 
+return email + "@codeimmersives.com"
+}
+
+console.log(ciEmailify('linh dang'))
+
+
+// Linh method doesn't work 
 // const ciEmailify = function (str){
 //   let result = ''
 //   // return str[0] + '.' + str[1] + '@codeimmersives.com'
@@ -61,13 +99,16 @@ console.log(truncate("'Well, that's just, like, your opinion man."))
 // let name = 'linh dang'
 // console.log(name.indexOf(' '))
 
-///////////////************ */
+
+// ///////////////************ *///////////////////////////////////////DONE
 const reverse = function(str){
   return str.split('').reverse().join('')
 }
 console.log(reverse('linh'))
 
-/////////******************** */
+
+
+/////////******************** *///////////////////////////////////////////DONE
 const onlyVowels = function(str){
 let vowels = 'aeoiu';
 let result = '';
@@ -80,7 +121,7 @@ let result = '';
 }
 console.log(onlyVowels('linh DAng'))
 
-//////////////////************** */
+// //////////////////************** */////////////////////////////////////////DONE
 const numberedChars = function (str){
   let result = '';
   for ( i = 0 ; i < str.length ; i++){
@@ -91,7 +132,7 @@ console.log(numberedChars('hello'))
 
 
 
-////////////////***************** */
+// ////////////////***************** *//////////////////////////////////////////DONE
 const crazyCase = function(str){
 let result = '';
 for ( i = 0 ; i < str.length ; i++){
@@ -107,8 +148,7 @@ console.log(crazyCase('Multiple words here'))
 
 
 
-///////////////////////********** */
-
+// ///////////////////////********** */ Linh done ////////////////////////////////////DONE
 const titleCase = function (str){
   let array = str.toLowerCase().split(' ')
   for ( let  i = 0 ; i  < array.length ; i ++) {
@@ -117,12 +157,26 @@ const titleCase = function (str){
   }
   return array.join(' ')
 }
-
 console.log(titleCase('return of the king'))
 
+// //////////////////////////// teacher fix ////////////////////////////////////////TEACHER FIX
+const titleCase2 = function (str){
+  let title = ''
+  for ( i = 0; i < str.length ; i ++){
+    const character = str[i].toLowerCase()
+    const prev = str[i -1]
+    const last = str[str.length-1]
+    if ( i === 0|| prev === ' '){
+      title = title + character.toUpperCase()
+    } else{ 
+      title = title + character;
+    }
+  }
+  return title
+}
+console.log(titleCase2('return of the king'))
 
-
-// ///////////////******************** */
+// // ///////////////******************** */ Linh Done //////////////////DONE
 const camelCase = function(str){
 let array = str.split(' ')
 console.log(array)
@@ -136,48 +190,55 @@ for ( i = 0 ; i < array.length ; i ++){
     array[i] = array[i][0].toLowerCase() + array[i].slice(1)
   } else {
   array[i] = array[i][0].toUpperCase() + array[i].slice(1)
-  console.log(array[i][0])
-  console.log(array[i].slice(1))
-  console.log(array[i])
+    console.log(array[i][0])
+    console.log(array[i].slice(1))
+    console.log(array[i])
   }
 }
   return array.join('')
 }
 console.log(camelCase('well yeah of course'))
 
-
-
-
-///////////////////////////*********** */NOT DONE
-// const crazyCase2ReturnOfCrazyCase = function (str){
-//  //console.log ( str.replace(/ /g, ''))
-// let result = str.split(' ')
-// console.log(result)
-// for ( i = 0; i < str.length ; i++){
-//    if ( i % 2 !== 0 ){
-//      result = result + str[i].toUpperCase() + str[i].slice(str.indexOf(' '))
-//    } else {
-//      result = result + str[i]
-//    }
-//  }
-//   return result
-// }
-
-// console.log(crazyCase2ReturnOfCrazyCase('crazy stuff'))
-
-const crazyCase2ReturnOfCrazyCase = function (str){
-
-let array = str.toLowerCase().split(' ')
-console.log(array)
-for ( i = 0; i < array.length ; i++){
-   if ( i % 2 !== 0 ){
-     array[i] = array[i].toUpperCase() 
-     console.log(array[i].toUpperCase())
-   }
+// /////////////////Teacher fix ////////////////////////////////////////TEACHER FIX
+const camelCase1 = function (str){
+  let result = ''
+  for (let i = 0 ; i < str.length ; i++){
+    const char = str[i].toLowerCase()
+    const prev = str[i-1]
+    if  ( char  !== ' ' && prev === ' '){
+        result = result + char.toUpperCase(0);
+      } else {
+        result = result + char;
+      }
+    } 
+    return result 
   }
-}
-console.log(crazyCase2ReturnOfCrazyCase('crazy stuff'))
 
+  console.log(camelCase1('well yeah of course'))
+
+
+
+////////////teacher fix LOOPS-in-LOOPS  //////////////////////////////////////TEACHER FIX
+const crazyCase2ReturnOfCrazyCase = function (str){
+  let crazyCase = ''
+  let letterIndex = 0;
+  for ( let i = 0 ; i < str.length ; i++){
+      if ( str[i] !== ' '){
+      if ( letterIndex % 2 === 0){
+      crazyCase = crazyCase + str[i].toLowerCase() 
+  } else {  
+      crazyCase = crazyCase + str[i].toUpperCase() 
+  } 
+      letterIndex ++ 
+  } else {
+      crazyCase = crazyCase + ' ';   
+  }  
+  }
+  return crazyCase 
+  }
+  
+  const test = crazyCase2ReturnOfCrazyCase('Dang My')
+  console.log(test)
 
 
 /********************************************
@@ -248,3 +309,5 @@ module.exports = {
   camelCase,
   crazyCase2ReturnOfCrazyCase,
 }
+// [master a8e95f8]  not done the last one
+//  1 file changed, 171 insertions(+), 1 deletion(-)
